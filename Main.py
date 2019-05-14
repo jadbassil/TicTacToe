@@ -1,11 +1,12 @@
 from Node import Node
 from AlphaBeta import alpha_beta_rac
+import sys
 
-def main():
+if __name__ == "__main__":
     choice = input('X or O: ').lower()
     while choice not in ['x', 'o']:
         choice = input('X or O: ').lower()
-    root = Node(choice, grid=[[None, None, None], [None, None, None], [None, None, None]])
+    root = Node(choice)
     while True:
         x, y = [int(x) for x in input('enter position(x y): ').split()]
         while not x in range(0, 3) and not y in range(0, 3):
@@ -29,13 +30,11 @@ def main():
         root.XorO = root.inverse_XorO()
         if root.check_win():
             print('you won')
-            return
+            sys.exit()
         elif root.check_win(root.inverse_XorO()):
             print('you lost')
-            return
+            sys.exit()
         elif root.nb_none() == 0:
             print("it's a tie")
-            return
+            sys.exit()
         input('\npress enter to continue: \n')
-    
-main()

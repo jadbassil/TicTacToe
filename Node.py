@@ -8,7 +8,6 @@ class Node:
         self.successors = successors     
         self.score = score
         self.grid = grid
-    
 
     def check_win(self, XorO = None):
         if XorO == None:
